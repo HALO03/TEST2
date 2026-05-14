@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Fira Code', monospace;
+  background: #0d1117;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+
+.glow {
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow:hover {
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+}
+
+
+#sidebar {
+  transition: transform 0.3s ease;
+}
+
+#sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+
+#courses-submenu, #js-submenu, #html-submenu, #java-submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+#courses-submenu.show, #js-submenu.show, #html-submenu.show, #java-submenu.show {
+  max-height: 300px; 
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.bg-gray-700 {
+  background-color: #21262d;
+}
+
+.text-blue-400 {
+  color: #58a6ff;
+}
+
+
+.border-gray-600 {
+  border-color: #30363d;
+}
+
+.border-gray-700 {
+  border-color: #21262d;
+}

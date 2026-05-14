@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scriptic - Coding Learning Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex h-screen bg-gray-900 text-gray-100 font-mono relative">
+  
+  <div class="absolute inset-0 opacity-5 bg-repeat" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><rect width=%2220%22 height=%2220%22 fill=%22none%22 stroke=%22%2300d4ff%22 stroke-width=%220.5%22/></svg>');"></div>
+  
+  
+  <aside id="sidebar" class="w-64 bg-gray-800 p-6 hidden md:flex flex-col shadow-lg border-r border-gray-700">
+    <h2 class="text-xl font-bold text-blue-300 mb-6 tracking-wide">Scriptic</h2>
+    <nav class="space-y-3">
+      <a href="#" class="flex items-center py-3 px-4 rounded-lg hover:bg-gray-700 hover:border-l-4 hover:border-blue-400 hover:translate-x-2 transition-all duration-300" onclick="showDashboard()">
+        <span class="mr-3 flex items-center">
+          <img src="../images/6bab6455-00fc-4100-b3a9-55f260cd8594.jpg" alt="dashboard" class="w-5 h-5 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+          <span class="emoji">🏘️</span>
+        </span>
+        <span>Dashboard</span>
+      </a>
+      <div class="relative">
+        <a href="#" id="courses-toggle" class="flex items-center py-3 px-4 rounded-lg hover:bg-gray-700 hover:border-l-4 hover:border-blue-400 hover:translate-x-2 transition-all duration-300" onclick="toggleCoursesMenu()">
+          <span class="mr-3 flex items-center">
+            <img src="../images/6fba91f5-dbb2-413e-bd86-b123b6e6c5f7.jpg" alt="courses" class="w-5 h-5 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+            <span class="emoji">📚</span>
+          </span>
+          <span>Courses</span>
+        </a>
+        <div id="courses-submenu" class="ml-6 mt-3 space-y-2 hidden">
+          <div class="relative">
+            <a href="#" class="flex items-center py-2 px-3 text-sm hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadCourseOverview('js')">
+              <span class="mr-2 flex items-center">
+                <img src="../images/6fba91f5-dbb2-413e-bd86-b123b6e6c5f7.jpg" alt="js" class="w-4 h-4 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <span class="emoji">💻</span>
+              </span>
+              <span>JavaScript</span>
+            </a>
+            <div id="js-submenu" class="ml-6 mt-2 space-y-1 hidden">
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('js', 1)">Lesson 1: Variables & Data Types</a>
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('js', 2)">Lesson 2: Functions & Loops</a>
+            </div>
+          </div>
+          <div class="relative">
+            <a href="#" class="flex items-center py-2 px-3 text-sm hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadCourseOverview('html')">
+              <span class="mr-2 flex items-center">
+                <img src="../images/c358e25c-6c60-4806-b846-e3513df98845.jpg" alt="html" class="w-4 h-4 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <span class="emoji">🌐</span>
+              </span>
+              <span>HTML & CSS</span>
+            </a>
+            <div id="html-submenu" class="ml-6 mt-2 space-y-1 hidden">
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('html', 1)">Lesson 1: HTML Structure</a>
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('html', 2)">Lesson 2: CSS Styling</a>
+            </div>
+          </div>
+          <div class="relative">
+            <a href="#" class="flex items-center py-2 px-3 text-sm hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadCourseOverview('java')">
+              <span class="mr-2 flex items-center">
+                <img src="../images/fe107b18-9147-4fdb-81d3-35855f3cc9f0.jpg" alt="java" class="w-4 h-4 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <span class="emoji">☕</span>
+              </span>
+              <span>Java</span>
+            </a>
+            <div id="java-submenu" class="ml-6 mt-2 space-y-1 hidden">
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('java', 1)">Lesson 1: Basics of Java</a>
+              <a href="#" class="block py-1 px-3 text-xs hover:text-blue-300 hover:translate-x-1 transition-all duration-300" onclick="loadLesson('java', 2)">Lesson 2: OOP Concepts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="flex items-center py-3 px-4 rounded-lg hover:bg-gray-700 hover:border-l-4 hover:border-blue-400 hover:translate-x-2 transition-all duration-300" onclick="showChallenges()">
+        <span class="mr-3 flex items-center">
+          <img src="../images/8a36431e-b1e7-4f72-8b54-f41fbc2e7196.jpg" alt="challenges" class="w-5 h-5 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+          <span class="emoji">⚡</span>
+        </span>
+        <span>Challenges</span>
+      </a>
+      <a href="#" class="flex items-center py-3 px-4 rounded-lg hover:bg-gray-700 hover:border-l-4 hover:border-blue-400 hover:translate-x-2 transition-all duration-300" onclick="showProgress()">
+        <span class="mr-3 flex items-center">
+          <img src="../images/6bab6455-00fc-4100-b3a9-55f260cd8594.jpg" alt="progress" class="w-5 h-5 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+          <span class="emoji">📊</span>
+        </span>
+        <span>Progress</span>
+      </a>
+    </nav>
+  </aside>
+  
+ 
+  <div class="flex-1 flex flex-col relative z-10">
+   
+    <header class="bg-gray-800 p-6 flex justify-between items-center md:justify-start border-b border-gray-700">
+      <button id="menu-toggle" class="md:hidden text-blue-400 text-lg">☰</button>
+      <h1 class="text-2xl font-bold ml-4 tracking-wide" id="page-title">Dashboard</h1>
+      <div class="ml-auto flex space-x-6">
+        <input type="text" placeholder="Search courses..." class="bg-gray-700 px-4 py-2 rounded-lg border border-gray-600 focus:border-blue-400 focus:outline-none transition">
+        <div class="w-10 h-10 bg-blue-400 rounded-full border-2 border-blue-300"></div> 
+      </div>
+    </header>
+    
+    
+    <main class="p-8 flex-1" id="main-content">
+      
+     
+      <section id="dashboard" class="bg-gray-800 p-8 rounded-lg mb-8 shadow-lg border border-gray-700">
+        <h2 class="text-3xl font-bold mb-6 text-blue-300">Welcome New Scriptic User!</h2>
+        <p class="mb-6 text-gray-300 leading-relaxed">Start Your journey with Scriptic. Learn To Code The Scriptic Way!</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-200 border border-gray-600">
+            <div class="flex items-center mb-4">
+            <span class="mr-3 flex items-center">
+              <img src="../images/6fba91f5-dbb2-413e-bd86-b123b6e6c5f7.jpg" alt="js" class="w-8 h-8 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+              <span class="emoji">💻</span>
+            </span>
+            <h3 class="font-bold text-lg">JavaScript Basics</h3>
+            </div>
+            <div class="flex justify-center mb-4">
+              <svg class="w-16 h-16" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="100, 100"></path>
+                <path id="js-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="75, 100" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <p class="text-center text-sm text-gray-300 mb-4">75% Complete</p>
+            <button class="bg-blue-500 px-6 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition w-full" onclick="loadCourseOverview('js')">Continue</button>
+          </div>
+          <div class="bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-200 border border-gray-600">
+            <div class="flex items-center mb-4">
+              <span class="mr-3 flex items-center">
+                <img src="../images/c358e25c-6c60-4806-b846-e3513df98845.jpg" alt="html" class="w-8 h-8 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <span class="emoji">🌐</span>
+              </span>
+              <h3 class="font-bold text-lg">HTML & CSS</h3>
+            </div>
+            <div class="flex justify-center mb-4">
+              <svg class="w-16 h-16" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="100, 100"></path>
+                <path id="html-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="90, 100" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <p class="text-center text-sm text-gray-300 mb-4">90% Complete</p>
+            <button class="bg-blue-500 px-6 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition w-full" onclick="loadCourseOverview('html')">Continue</button>
+          </div>
+          <div class="bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-200 border border-gray-600">
+            <div class="flex items-center mb-4">
+              <span class="mr-3 flex items-center">
+                <img src="../images/fe107b18-9147-4fdb-81d3-35855f3cc9f0.jpg" alt="java" class="w-8 h-8 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <span class="emoji">☕</span>
+              </span>
+              <h3 class="font-bold text-lg">Java Intro</h3>
+            </div>
+            <div class="flex justify-center mb-4">
+              <svg class="w-16 h-16" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="100, 100"></path>
+                <path id="java-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="50, 100" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <p class="text-center text-sm text-gray-300 mb-4">50% Complete</p>
+            <button class="bg-blue-500 px-6 py-3 rounded-lg text-white font-semibold hover:bg-blue-600 transition w-full" onclick="loadCourseOverview('java')">Start</button>
+          </div>
+        </div>
+      </section>
+      
+    
+      <section id="course-content" class="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <span class="mr-4 flex items-center">
+              <img id="course-icon-img" src="../images/6bab6455-00fc-4100-b3a9-55f260cd8594.jpg" alt="" class="w-10 h-10 rounded-sm object-cover" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+              <span id="course-icon-emoji" class="text-3xl"></span>
+            </span>
+              <h2 id="course-title" class="text-3xl font-bold text-blue-300"></h2>
+            </div>
+          <button class="bg-gray-600 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-500 transition" onclick="showDashboard()">← Back to Dashboard</button>
+        </div>
+        <p id="course-description" class="mb-6 text-gray-300 leading-relaxed"></p>
+        <div class="flex justify-center mb-6">
+          <svg id="course-progress-svg" class="w-20 h-20" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="100, 100"></path>
+            <path id="course-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="75, 100" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <p id="course-progress-text" class="text-center text-sm text-gray-300 mb-6"></p>
+        <div id="course-lessons" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+       
+        </div>
+      </section>
+      
+     
+      <section id="lesson-content" class="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 hidden">
+        <h2 id="lesson-title" class="text-3xl font-bold mb-6 text-blue-300"></h2>
+
+        <!-- Video player area -->
+        <div class="mb-4">
+          <video id="lesson-video" class="w-full max-h-96 bg-black rounded" controls>
+            <source id="lesson-video-src" src="" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+
+        <!-- Controls: file upload or URL -->
+        <div class="flex flex-col md:flex-row md:items-center md:space-x-3 mb-4">
+          <input id="video-file-input" type="file" accept="video/*" class="mb-2 md:mb-0 text-sm text-gray-300" onchange="attachLessonVideo(this, window.currentCourse, window.currentLesson)">
+          <div class="flex items-center space-x-2 w-full">
+            <input id="video-url-input" type="text" placeholder="Paste video URL ()" class="flex-1 bg-gray-700 px-3 py-2 rounded border border-gray-600 text-sm" />
+            <button onclick="saveVideoURL(window.currentCourse, window.currentLesson)" class="bg-blue-500 px-4 py-2 rounded text-white text-sm">Load URL</button>
+          </div>
+        </div>
+
+        <!-- Small notes area -->
+        <div class="mb-4">
+          <label class="block text-sm text-gray-400 mb-2">Notes</label>
+          <textarea id="lesson-note" rows="3" placeholder="Add a short note for this lesson" class="w-full bg-gray-700 px-3 py-2 rounded border border-gray-600 text-sm text-gray-200"></textarea>
+          <div class="mt-2">
+            <button onclick="saveLessonNote(window.currentCourse, window.currentLesson)" class="bg-green-500 px-4 py-2 rounded text-white text-sm">Save Note</button>
+            <button onclick="clearLessonNote(window.currentCourse, window.currentLesson)" class="ml-2 bg-gray-600 px-3 py-2 rounded text-white text-sm">Clear</button>
+          </div>
+        </div>
+
+        <div id="lesson-body" class="space-y-6 text-gray-200 leading-relaxed"></div>
+      </section>
+    </main>
+  </div>
+  
+ 
+  <aside id="right-panel" class="w-64 bg-gray-800 p-6 hidden md:flex flex-col shadow-lg border-l border-gray-700">
+    <h3 class="text-lg font-bold text-blue-300 mb-4">Details</h3>
+    <p id="detail-course" class="text-gray-300 mb-4">Select a course to see details.</p>
+    <div class="mb-4">
+      <h4 class="text-sm text-gray-400">Current Streak</h4>
+      <p class="text-2xl font-bold text-blue-400">7 Days</p>
+    </div>
+      <div>
+      <h4 class="text-sm text-gray-400">Quick Actions</h4>
+      <button class="mt-2 bg-blue-500 px-4 py-2 rounded-lg text-white w-full" onclick="showDashboard()">Back to Dashboard</button>
+      <button class="mt-2 bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded-lg text-white w-full transition" onclick="window.location.href='../main ui/index.html'">Back to Main</button>
+    </div>
+  </aside>
+  
+  <script>
+    window.addEventListener('load', function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var course = urlParams.get('course');
+      if (course && typeof loadCourseOverview === 'function') {
+        loadCourseOverview(course);
+      }
+    });
+  </script>
+  <script src="functions.js"></script>
+</body>
+</html>
